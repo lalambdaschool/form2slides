@@ -1,3 +1,4 @@
 /credentials.json
 /oauth_credentials.json
 /token.pickle
+/.direnv/
