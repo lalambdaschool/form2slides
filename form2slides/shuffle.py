@@ -9,7 +9,8 @@ with open("token.pickle", "rb") as file:
 
 slides_service = build("slides", "v1", credentials=creds)
 
-presentation_id = "15Z6SH8QjYatn3tgNeKZ-ZVyYqDuyn09nTzyPyVuRjZI"
+# presentation_id = "15Z6SH8QjYatn3tgNeKZ-ZVyYqDuyn09nTzyPyVuRjZI" # test
+presentation_id = "1CzdyPM6fOlPWT_by0177xS_nXzPy7LciUixj8FlZlxM"  # prod
 
 # Get the list of slide IDs in the presentation
 presentation = (
