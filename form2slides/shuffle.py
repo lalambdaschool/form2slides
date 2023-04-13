@@ -1,11 +1,11 @@
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
+import sys
 import pickle
 import random
 
-with open("token.pickle", "rb") as file:
-    creds = pickle.load(file)
+creds = pickle.loads(sys.stdin.buffer.read())
 
 slides_service = build("slides", "v1", credentials=creds)
 
