@@ -1,5 +1,7 @@
 import pickle
+import json
 import os
+import sys
 import google.auth
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -11,6 +13,7 @@ SCOPES = ["https://www.googleapis.com/auth/drive"]  # Replace with the scopes yo
 def get_google_credentials():
     creds = None
     token_file = "token.pickle"
+    client_secrets_file = "oauth_credentials.json"
 
     if os.path.exists(token_file):
         with open(token_file, "rb") as token:
@@ -20,8 +23,14 @@ def get_google_credentials():
         if creds and creds.expired and creds.refresh_token:
             creds.refresh(Request())
         else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                "oauth_credentials.json", SCOPES
+            if os.path.exists(client_secrets_file):
+                with open(client_secrets_file, "r") as json_file:
+                    client_config = json.load(json_file)
+            else:
+                client_config = json.loads(sys.stdin.buffer.read())
+
+            flow = InstalledAppFlow.from_client_config(
+                client_config, SCOPES
             )
             creds = flow.run_local_server(port=0)
 
