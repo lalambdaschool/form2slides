@@ -31,6 +31,7 @@ def get_google_credentials():
     return creds
 
 
-credentials = get_google_credentials()
-print("Access Token:", credentials.token)
-print("Refresh Token:", credentials.refresh_token)
+if __name__ == "__main__":
+    credentials = get_google_credentials()
+    print("Access Token:", credentials.token)
+    print("Refresh Token:", credentials.refresh_token)

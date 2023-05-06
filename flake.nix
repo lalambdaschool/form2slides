@@ -45,6 +45,8 @@
                   Type = "simple";
                   ExecStart =
                     "${self.defaultPackage.${system}}/bin/form2slides-shuffle";
+                  StateDirectory = "form2slides";
+                  WorkingDirectory = "/var/lib/form2slides";
                   DynamicUser = true;
 
                   NoNewPrivileges = true;

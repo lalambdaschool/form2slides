@@ -1,13 +1,14 @@
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
+from form2slides.auth import get_google_credentials
 import sys
 import pickle
 import random
 
 
 def main():
-    creds = pickle.loads(sys.stdin.buffer.read())
+    creds = get_google_credentials()
 
     slides_service = build("slides", "v1", credentials=creds)
 

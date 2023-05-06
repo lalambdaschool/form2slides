@@ -1,13 +1,13 @@
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
+from form2slides.auth import get_google_credentials
 import pickle
 import uuid
 
 
 def main():
-    with open("token.pickle", "rb") as file:
-        creds = pickle.load(file)
+    creds = get_google_credentials()
 
     # Initialize the Google Form and Slides APIs
     form_service = build("forms", "v1", credentials=creds)
